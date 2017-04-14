@@ -8,7 +8,7 @@
 
 #include <stdio.h>
 #include <stdlib.h>
-#include "karp_helper.h"
+#include "kk_helper.h"
 
 // global variables
 FILE *file; 
@@ -27,7 +27,7 @@ int main(int argc, char* argv[]) {
     } else {
 		// inputs content from file to A and B matrices
 		for (int i = 0; i < 100; i++) {
-			fscanf(file, "%d", ??);
+			//fscanf(file, "%d", ??);
 		}
 	}
       

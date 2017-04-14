@@ -7,6 +7,13 @@
    ***************************************************************************/
 
 // definitions
+typedef struct {
+	int currSize; // current size of heap
+	int maxSize; // maximum number elements in heap 
+	int *list; // data array
+} heap;
+
+
 
 
 // prototypes
