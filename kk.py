@@ -2,6 +2,7 @@ import math
 import random
 import sys
 import copy
+import time
 from bisect import insort_left
 
 
@@ -157,23 +158,57 @@ for line in file:
 for i in range(100):
 	X = []
 	Sol = []
+	Times = []
 
 	for j in range(100):
 
 		# generate set of 100 integers for testing purposes
 		X.append(random.randrange(1, math.pow(10, 12)))
 	
-	
-	Sol.append(hillS(X))
-	Sol.append(hillP(X))
-	Sol.append(sim_annealS(X))
-	Sol.append(sim_annealP(X))
-	Sol.append(reprandS(X))
-	Sol.append(reprandP(X))
+	s1 = time.time()
+	hillS(X)
+	s11 = time.time()
+	s11 = s11 - s1
 
-	Sol.append(kk(X))
+	s2 = time.time()
+	hillP(X)
+	s22 = time.time()
+	s22 = s22 - s2
 
-	print Sol
+	s3 = time.time()
+	sim_annealS(X)
+	s33 = time.time()
+	s33 = s33 - s3
+
+	s4 = time.time()
+	sim_annealP(X)
+	s44 = time.time()
+	s44 = s44 - s4
+
+	s5 = time.time()
+	reprandS(X)
+	s55 = time.time()
+	s55 = s55 - s5
+
+	s6 = time.time()
+	reprandP(X)
+	s66 = time.time()
+	s66 = s66 - s6
+
+	s7 = time.time()
+	kk(X)
+	s77 = time.time()
+	s77 = s77 - s7
+
+	Times.append(s11)
+	Times.append(s22)
+	Times.append(s33)
+	Times.append(s44)
+	Times.append(s55)
+	Times.append(s66)
+	Times.append(s77)
+
+	print Times
 
 
 
