@@ -1,3 +1,5 @@
+#!/usr/bin/env python
+
 import math
 import random
 import sys
@@ -39,7 +41,7 @@ def genrandP(n):
 def neighS(S):
 	i = 0
 	j = 0
-	while (i == j):
+	while i == j:
 		i = random.randrange(0, len(S))
 		j = random.randrange(0, len(S))
 
@@ -128,7 +130,7 @@ def sim_annealS(A):
 			S = copy.deepcopy(S2)
 		if residS(S, A) < residS(S3, A):
 			S3 = copy.deepcopy(S)
-	return residS(S, A)
+	return residS(S3, A)
 
 def sim_annealP(A):
 	S = genrandP(len(A))
@@ -141,7 +143,7 @@ def sim_annealP(A):
 			S = copy.deepcopy(S2)
 		if residP(S, A) < residP(S3, A):
 			S3 = copy.deepcopy(S)
-	return residP(S, A)
+	return residP(S3, A)
 
 ### Testing ###
 
