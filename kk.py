@@ -1,5 +1,7 @@
 #!/usr/bin/env python
 
+### Authors: 30939506 and 50940144 ###
+
 import math
 import random
 import sys
@@ -10,6 +12,7 @@ from bisect import insort_left
 
 max_iter = 25000
 
+### Karmarkar-Karp Algorithm ####
 def kk(A):
 	A.sort()
 	while len(A) > 1:
@@ -20,7 +23,7 @@ def kk(A):
 def T(iter):
 	return math.pow(10, 10) * math.pow(0.8, math.floor(iter / 300))
 
-### Generating Sequence S of +1 and -1 values###
+### Generating Sequence S of +1 and -1 values ###
 def genrandS(n):
 	S = []
 	for i in range(n):
@@ -85,6 +88,8 @@ def residP(S, A):
 
 """Had to use deep copy because you need to use the original Sequence
 not the mutated one"""
+
+### Repeated Random Sequence ###
 def reprandS(A):
 	S = genrandS(len(A))
 	for i in range(max_iter):
@@ -93,7 +98,7 @@ def reprandS(A):
 			S = copy.deepcopy(S2)
 	return residS(S, A)
 
-
+### Repeated Random Prepartioning ###
 def reprandP(A):
 	S = genrandP(len(A))
 	for i in range(max_iter):
@@ -102,7 +107,7 @@ def reprandP(A):
 			S = copy.deepcopy(S2)
 	return residP(S, A)
 
-
+### Hill Climbing Sequence ###
 def hillS(A):
 	S = genrandS(len(A))
 	for i in range(max_iter):
@@ -111,6 +116,7 @@ def hillS(A):
 			S = copy.deepcopy(S2)
 	return residS(S, A)
 
+### Hill Climbing Prepartioning ###
 def hillP(A):
 	S = genrandP(len(A))
 	for i in range(max_iter):
@@ -119,6 +125,7 @@ def hillP(A):
 			S = copy.deepcopy(S2)
 	return residP(S, A)
 
+### Simulated Annealing Sequence ###
 def sim_annealS(A):
 	S = genrandS(len(A))
 	S3 = copy.deepcopy(S)
@@ -132,6 +139,7 @@ def sim_annealS(A):
 			S3 = copy.deepcopy(S)
 	return residS(S3, A)
 
+### Simulated Annealing Prepartioning ###
 def sim_annealP(A):
 	S = genrandP(len(A))
 	S3 = copy.deepcopy(S)
@@ -145,72 +153,42 @@ def sim_annealP(A):
 			S3 = copy.deepcopy(S)
 	return residP(S3, A)
 
+
 ### Testing ###
 
-#### Will move this to bottom of file later ####
-"""
 file = open(sys.argv[1], 'r')
 
 A = []
 
 for line in file:
-	A.append(int(line))"""
+	A.append(int(line))
 
 # generate 100 random instances
 for i in range(100):
-	X = []
+	#X = []
 	Sol = []
-	Times = []
+	#Times = []
 
-	for j in range(100):
+	#for j in range(100):
 
-		# generate set of 100 integers for testing purposes
-		X.append(random.randrange(1, math.pow(10, 12)))
+		# generate set of 100 64-bit integers for testing purposes
+
+		# Uncomment if you want to randomly generate numbers
+		# X.append(random.randrange(1, math.pow(10, 12)))
+
 	
-	s1 = time.time()
-	hillS(X)
-	s11 = time.time()
-	s11 = s11 - s1
+	# Uncomment if you want the other results
+	""""Sol.append(hillS(X))
+	Sol.append(hillP(X))
+	Sol.append(sim_annealS(X))
+	Sol.append(sim_annealP(X))
+	Sol.append(reprandS(X))
+	Sol.append(reprandP(X))
+	Sol.append(kk(X))"""
+	
+	Sol.append(kk(A))
 
-	s2 = time.time()
-	hillP(X)
-	s22 = time.time()
-	s22 = s22 - s2
-
-	s3 = time.time()
-	sim_annealS(X)
-	s33 = time.time()
-	s33 = s33 - s3
-
-	s4 = time.time()
-	sim_annealP(X)
-	s44 = time.time()
-	s44 = s44 - s4
-
-	s5 = time.time()
-	reprandS(X)
-	s55 = time.time()
-	s55 = s55 - s5
-
-	s6 = time.time()
-	reprandP(X)
-	s66 = time.time()
-	s66 = s66 - s6
-
-	s7 = time.time()
-	kk(X)
-	s77 = time.time()
-	s77 = s77 - s7
-
-	Times.append(s11)
-	Times.append(s22)
-	Times.append(s33)
-	Times.append(s44)
-	Times.append(s55)
-	Times.append(s66)
-	Times.append(s77)
-
-	print Times
+	print Sol
 
 
 
