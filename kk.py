@@ -20,8 +20,8 @@ def kk(A):
 	return A[0]
 
 ### Cooling Function ###
-def T(iter):
-	return math.pow(10, 10) * math.pow(0.8, math.floor(iter / 300))
+def T(i):
+	return math.pow(10, 10) * math.pow(0.8, math.floor(i / 300))
 
 ### Generating Sequence S of +1 and -1 values ###
 def genrandS(n):
@@ -185,7 +185,7 @@ for i in range(100):
 	Sol.append(reprandS(X))
 	Sol.append(reprandP(X))
 	Sol.append(kk(X))"""
-	
+
 	Sol.append(kk(A))
 
 	print Sol
